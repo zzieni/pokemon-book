@@ -1,12 +1,13 @@
 import React from 'react';
 import Dex from './Dex';
 import { useNavigate } from 'react-router-dom';
+import logo from '/src/assets/images/logo.png';
 
 function Home() {
   const navigte = useNavigate();
   return (
-    <div>
-      <h1>Home</h1>
+    <>
+      <img src={logo} className="logo" />
       <div>
         <button
           onClick={() => {
@@ -16,7 +17,7 @@ function Home() {
           포켓몬 도감 시작하기
         </button>
       </div>
-    </div>
+    </>
   );
 }
 
