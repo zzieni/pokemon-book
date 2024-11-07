@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import logo from '/src/assets/images/logo.png';
+import MOCK_DATA from '../data/MOCK_DATA';
 
 // 스타일링된 컴포넌트 정의
 const Card = styled.div`
@@ -46,6 +47,8 @@ const AddButton = styled.button`
 `;
 
 function PokemonCard({ name, number }) {
+  const POKEMON_DATA = MOCK_DATA;
+  console.log(POKEMON_DATA);
   return (
     <>
       <Card>
