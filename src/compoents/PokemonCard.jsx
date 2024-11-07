@@ -1,6 +1,4 @@
-import React from 'react';
 import styled from 'styled-components';
-import MOCK_DATA from '../data/MOCK_DATA';
 
 // 스타일링된 컴포넌트 정의
 const Card = styled.div`
@@ -46,21 +44,18 @@ const AddButton = styled.button`
   }
 `;
 
-function PokemonCard() {
-  const POKEMON_DATA = MOCK_DATA;
-
+function PokemonCard({ pokemon }) {
+  // console.log(pokemonData);
   return (
     <>
-      {POKEMON_DATA.map((pokemon) => {
-        return (
-          <Card key={pokemon.id}>
-            <PokemonImage src={pokemon.img_url} alt={name} />
-            <PokemonInfo>{pokemon.korean_name}</PokemonInfo>
-            <PokemonInfo>No. {pokemon.id}</PokemonInfo>
-            <AddButton>추가</AddButton>
-          </Card>
-        );
-      })}
+      return (
+      <Card>
+        <PokemonImage src={pokemon.img_url} alt={name} />
+        <PokemonInfo>{pokemon.korean_name}</PokemonInfo>
+        <PokemonInfo>No. {pokemon.id}</PokemonInfo>
+        <AddButton>추가</AddButton>
+      </Card>
+      );
     </>
   );
 }

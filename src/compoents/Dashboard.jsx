@@ -1,4 +1,3 @@
-import React from 'react';
 import styled from 'styled-components';
 import pokeball from '/src/assets/images/pokeball.png';
 
@@ -42,7 +41,7 @@ const PokeballImg = styled.img`
   margin: 40px;
 `;
 
-function Dashboard() {
+function Dashboard({ pickedPokemonData }) {
   return (
     <Container>
       <Title>나만의 포켓몬</Title>

@@ -1,4 +1,3 @@
-import React from 'react';
 import PokemonCard from './PokemonCard';
 import styled from 'styled-components';
 
@@ -14,10 +13,13 @@ const PokemonListSection = styled.div`
   flex-wrap: wrap;
 `;
 
-function PokemonList() {
+function PokemonList({ pokemonData }) {
+  console.log(pokemonData);
   return (
     <PokemonListSection>
-      <PokemonCard />
+      {pokemonData.map((pokemon) => (
+        <PokemonCard key={pokemon.id} pokemon={pokemon} />
+      ))}
     </PokemonListSection>
   );
 }
