@@ -1,6 +1,5 @@
 import React from 'react';
 import styled from 'styled-components';
-import logo from '/src/assets/images/logo.png';
 import MOCK_DATA from '../data/MOCK_DATA';
 
 // 스타일링된 컴포넌트 정의
@@ -29,6 +28,7 @@ const PokemonInfo = styled.p`
   margin: 4px 0;
   font-size: 14px;
   color: #333;
+  font-weight: bold;
 `;
 
 const AddButton = styled.button`
@@ -46,53 +46,21 @@ const AddButton = styled.button`
   }
 `;
 
-function PokemonCard({ name, number }) {
+function PokemonCard() {
   const POKEMON_DATA = MOCK_DATA;
-  console.log(POKEMON_DATA);
+
   return (
     <>
-      <Card>
-        <PokemonImage src={logo} alt={name} />
-        <PokemonInfo>이름: {name}</PokemonInfo>
-        <PokemonInfo>번호: {number}</PokemonInfo>
-        <AddButton>추가</AddButton>
-      </Card>
-      <Card>
-        <PokemonImage src={logo} alt={name} />
-        <PokemonInfo>이름: {name}</PokemonInfo>
-        <PokemonInfo>번호: {number}</PokemonInfo>
-        <AddButton>추가</AddButton>
-      </Card>
-      <Card>
-        <PokemonImage src={logo} alt={name} />
-        <PokemonInfo>이름: {name}</PokemonInfo>
-        <PokemonInfo>번호: {number}</PokemonInfo>
-        <AddButton>추가</AddButton>
-      </Card>
-      <Card>
-        <PokemonImage src={logo} alt={name} />
-        <PokemonInfo>이름: {name}</PokemonInfo>
-        <PokemonInfo>번호: {number}</PokemonInfo>
-        <AddButton>추가</AddButton>
-      </Card>
-      <Card>
-        <PokemonImage src={logo} alt={name} />
-        <PokemonInfo>이름: {name}</PokemonInfo>
-        <PokemonInfo>번호: {number}</PokemonInfo>
-        <AddButton>추가</AddButton>
-      </Card>
-      <Card>
-        <PokemonImage src={logo} alt={name} />
-        <PokemonInfo>이름: {name}</PokemonInfo>
-        <PokemonInfo>번호: {number}</PokemonInfo>
-        <AddButton>추가</AddButton>
-      </Card>
-      <Card>
-        <PokemonImage src={logo} alt={name} />
-        <PokemonInfo>이름: {name}</PokemonInfo>
-        <PokemonInfo>번호: {number}</PokemonInfo>
-        <AddButton>추가</AddButton>
-      </Card>
+      {POKEMON_DATA.map((pokemon) => {
+        return (
+          <Card key={pokemon.id}>
+            <PokemonImage src={pokemon.img_url} alt={name} />
+            <PokemonInfo>{pokemon.korean_name}</PokemonInfo>
+            <PokemonInfo>No. {pokemon.id}</PokemonInfo>
+            <AddButton>추가</AddButton>
+          </Card>
+        );
+      })}
     </>
   );
 }
