@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // 스타일링된 컴포넌트 정의
 const Card = styled.div`
@@ -22,11 +23,18 @@ const PokemonImage = styled.img`
   margin-bottom: 12px;
 `;
 
-const PokemonInfo = styled.p`
+const PokemonName = styled.p`
   margin: 4px 0;
-  font-size: 14px;
-  color: #333;
+  font-size: 20px;
+  color: #000000;
   font-weight: bold;
+`;
+
+const PokemonId = styled.p`
+  margin: 4px 0;
+  font-size: 15px;
+  color: #000000;
+  /* font-weight: bold; */
 `;
 
 const AddButton = styled.button`
@@ -40,22 +48,38 @@ const AddButton = styled.button`
   transition: background-color 0.3s;
 
   &:hover {
-    background-color: #45a049;
+    background-color: #005200;
   }
 `;
 
 function PokemonCard({ pokemon }) {
-  // console.log(pokemonData);
+  // const handleCard = (e, pokemonCard) => {
+  //   e.preventDefault();
+  //   console.log('카드 클릭', pokemonCard);
+  // };
+
+  const handleAdd = (e, selectedPokemon) => {
+    e.preventDefault(); //본인 만
+    // e.stopPropagation(); // 부모까지
+    console.log('추가 버튼 클릭', selectedPokemon);
+  };
+
+  // TODO: 디테일 페이지 Link 또는 버튼!
   return (
     <>
-      return (
-      <Card>
-        <PokemonImage src={pokemon.img_url} alt={name} />
-        <PokemonInfo>{pokemon.korean_name}</PokemonInfo>
-        <PokemonInfo>No. {pokemon.id}</PokemonInfo>
-        <AddButton>추가</AddButton>
-      </Card>
-      );
+      <Link to={`/pokemon/${pokemon.id}`}>
+        <Card>
+          <PokemonImage src={pokemon.img_url} alt={name} />
+          <PokemonName>{pokemon.korean_name}</PokemonName>
+          <PokemonId>No. {pokemon.id}</PokemonId>
+          <AddButton value={pokemon} onClick={(e) => handleAdd(e, pokemon)}>
+            추가
+          </AddButton>
+        </Card>
+      </Link>
+      {/* <AddButton value={pokemon} onClick={(e) => handleAddBtn(e, pokemon)}>
+        추가
+      </AddButton> */}
     </>
   );
 }

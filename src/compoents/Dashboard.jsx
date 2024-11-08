@@ -46,22 +46,22 @@ function Dashboard({ pickedPokemonData }) {
     <Container>
       <Title>나만의 포켓몬</Title>
       <MyPokemonSection>
-        <Pokeball>
+        <Pokeball key={1}>
           <PokeballImg src={pokeball} alt="pokeball" />
         </Pokeball>
-        <Pokeball>
+        <Pokeball key={2}>
           <PokeballImg src={pokeball} alt="pokeball" />
         </Pokeball>
-        <Pokeball>
+        <Pokeball key={3}>
           <PokeballImg src={pokeball} alt="pokeball" />
         </Pokeball>
-        <Pokeball>
+        <Pokeball key={4}>
           <PokeballImg src={pokeball} alt="pokeball" />
         </Pokeball>
-        <Pokeball>
+        <Pokeball key={5}>
           <PokeballImg src={pokeball} alt="pokeball" />
         </Pokeball>
-        <Pokeball>
+        <Pokeball key={6}>
           <PokeballImg src={pokeball} alt="pokeball" />
         </Pokeball>
       </MyPokemonSection>

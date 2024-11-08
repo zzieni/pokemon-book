@@ -1,5 +1,6 @@
 import PokemonCard from './PokemonCard';
 import styled from 'styled-components';
+import MOCK_DATA from '../data/MOCK_DATA';
 
 const PokemonListSection = styled.div`
   background-color: #fff;
@@ -13,8 +14,8 @@ const PokemonListSection = styled.div`
   flex-wrap: wrap;
 `;
 
-function PokemonList({ pokemonData }) {
-  console.log(pokemonData);
+function PokemonList() {
+  const pokemonData = MOCK_DATA;
   return (
     <PokemonListSection>
       {pokemonData.map((pokemon) => (
