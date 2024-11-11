@@ -52,7 +52,7 @@ const AddButton = styled.button`
   }
 `;
 
-function PokemonCard({ pokemon }) {
+function PokemonCard({ pokemon, pickedPokemonData, setPickedPokemonData }) {
   // const handleCard = (e, pokemonCard) => {
   //   e.preventDefault();
   //   console.log('카드 클릭', pokemonCard);
@@ -61,7 +61,21 @@ function PokemonCard({ pokemon }) {
   const handleAdd = (e, selectedPokemon) => {
     e.preventDefault(); //본인 만
     // e.stopPropagation(); // 부모까지
-    console.log('추가 버튼 클릭', selectedPokemon);
+
+    // 6개 제한, 중복 체크 하고 altet
+    const maxPickedPokemon = pickedPokemonData.length >= 6;
+
+    const checkedPokemon = pickedPokemonData.find((el) => {
+      return el.id === selectedPokemon.id;
+    });
+
+    if (maxPickedPokemon) {
+      alert('더 이상 포켓몬을 등록할 수 없습니다.');
+    } else if (checkedPokemon) {
+      alert('이미 추가된 포켓몬 입니다.');
+    } else {
+      setPickedPokemonData([...pickedPokemonData, selectedPokemon]);
+    }
   };
 
   // TODO: 디테일 페이지 Link 또는 버튼!
@@ -69,7 +83,7 @@ function PokemonCard({ pokemon }) {
     <>
       <Link to={`/pokemon/${pokemon.id}`}>
         <Card>
-          <PokemonImage src={pokemon.img_url} alt={name} />
+          <PokemonImage src={pokemon.img_url} alt={pokemon} />
           <PokemonName>{pokemon.korean_name}</PokemonName>
           <PokemonId>No. {pokemon.id}</PokemonId>
           <AddButton value={pokemon} onClick={(e) => handleAdd(e, pokemon)}>

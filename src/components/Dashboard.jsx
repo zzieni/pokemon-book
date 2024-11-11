@@ -41,29 +41,86 @@ const PokeballImg = styled.img`
   margin: 40px;
 `;
 
-function Dashboard({ pickedPokemonData }) {
+const PickedPokemon = styled.div``;
+
+const PokemonImage = styled.img`
+  width: 120px;
+  height: 120px;
+  object-fit: contain;
+  margin-bottom: 12px;
+`;
+
+const PokemonName = styled.p`
+  margin: 4px 0;
+  font-size: 20px;
+  color: #000000;
+  font-weight: bold;
+`;
+
+const RemoveButton = styled.button`
+  margin-top: 12px;
+  padding: 8px 16px;
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+
+  &:hover {
+    background-color: #005200;
+  }
+`;
+
+function Dashboard({ pickedPokemonData, setPickedPokemonData }) {
+  // const AddPokemon = () => {
+  //   return pickedPokemonData.map((pokemon) => {
+  //     return (
+  //       <PickedPokemon key={pokemon.id}>
+  //         <PokemonImage src={pokemon.img_url} alt={pokemon} />
+  //         <PokemonName>{pokemon.korean_name}</PokemonName>
+  //       </PickedPokemon>
+  //     );
+  //   });
+  // };
+
+  const handleRemove = (p) => {
+    const removePokemon = pickedPokemonData.filter((el) => {
+      p.id !== el.id;
+    });
+    setPickedPokemonData(removePokemon);
+  };
+
+  const monsterBallCount = 6;
+
+  let dashboradList = monsterBallCount - pickedPokemonData.length;
+
+  let monsterBall = new Array(dashboradList).fill(null);
+
   return (
     <Container>
       <Title>나만의 포켓몬</Title>
       <MyPokemonSection>
-        <Pokeball key={1}>
-          <PokeballImg src={pokeball} alt="pokeball" />
-        </Pokeball>
-        <Pokeball key={2}>
-          <PokeballImg src={pokeball} alt="pokeball" />
-        </Pokeball>
-        <Pokeball key={3}>
-          <PokeballImg src={pokeball} alt="pokeball" />
-        </Pokeball>
-        <Pokeball key={4}>
-          <PokeballImg src={pokeball} alt="pokeball" />
-        </Pokeball>
-        <Pokeball key={5}>
-          <PokeballImg src={pokeball} alt="pokeball" />
-        </Pokeball>
-        <Pokeball key={6}>
-          <PokeballImg src={pokeball} alt="pokeball" />
-        </Pokeball>
+        {pickedPokemonData.map((pokemon) => {
+          return (
+            <div key={pokemon.id}>
+              <PickedPokemon>
+                <PokemonImage src={pokemon.img_url} alt={pokemon} />
+                <PokemonName>{pokemon.korean_name}</PokemonName>
+                <RemoveButton onClick={(e) => handleRemove(e.target.value)}>
+                  삭제
+                </RemoveButton>
+              </PickedPokemon>
+            </div>
+          );
+        })}
+        {monsterBall.map((_, index) => {
+          return (
+            <Pokeball key={index}>
+              <PokeballImg src={pokeball} alt={pokeball} />
+            </Pokeball>
+          );
+        })}
       </MyPokemonSection>
     </Container>
   );

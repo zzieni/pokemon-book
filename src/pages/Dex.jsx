@@ -5,8 +5,6 @@ import PokemonList from '../components/PokemonList';
 function Dex() {
   const [pickedPokemonData, setPickedPokemonData] = useState([]);
 
-  // const [pokemonData, setPokemonData] = useState(MOCK_DATA);
-
   return (
     <>
       <header>
@@ -17,7 +15,10 @@ function Dex() {
       </header>
 
       <main>
-        <PokemonList />
+        <PokemonList
+          pickedPokemonData={pickedPokemonData}
+          setPickedPokemonData={setPickedPokemonData}
+        />
       </main>
       <footer />
     </>
