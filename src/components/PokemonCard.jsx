@@ -60,15 +60,16 @@ const AddButton = styled.button`
 `;
 
 function PokemonCard({ pokemon }) {
-  const data = useContext(PokemonContext);
+  const { pickedPokemonData, setPickedPokemonData } =
+    useContext(PokemonContext);
 
   const handleAdd = (e, selectedPokemon) => {
     e.preventDefault(); //본인 만
     // e.stopPropagation(); // 부모까지
 
-    const maxPickedPokemon = data.pickedPokemonData.length >= 6;
+    const maxPickedPokemon = pickedPokemonData.length >= 6;
 
-    const checkedPokemon = data.pickedPokemonData.find((el) => {
+    const checkedPokemon = pickedPokemonData.find((el) => {
       return el.id === selectedPokemon.id;
     });
     if (maxPickedPokemon) {
@@ -94,13 +95,10 @@ function PokemonCard({ pokemon }) {
         cancelButtonText: '취소',
       }).then((result) => {
         if (result.value) {
-          data.setPickedPokemonData([
-            ...data.pickedPokemonData,
-            selectedPokemon,
-          ]);
+          setPickedPokemonData([...pickedPokemonData, selectedPokemon]);
           localStorage.setItem(
             'localStorageData',
-            JSON.stringify([...data.pickedPokemonData, selectedPokemon])
+            JSON.stringify([...pickedPokemonData, selectedPokemon])
           );
         }
       });

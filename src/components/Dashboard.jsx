@@ -77,12 +77,13 @@ const RemoveButton = styled.button`
 `;
 
 function Dashboard() {
-  const data = useContext(PokemonContext);
+  const { pickedPokemonData, setPickedPokemonData } =
+    useContext(PokemonContext);
 
   const handleRemove = (e, pokemon) => {
     e.preventDefault();
 
-    const removePokemon = data.pickedPokemonData.filter((el) => {
+    const removePokemon = pickedPokemonData.filter((el) => {
       return pokemon.id !== el.id;
     });
 
@@ -98,7 +99,7 @@ function Dashboard() {
       cancelButtonText: '취소',
     }).then((result) => {
       if (result.value) {
-        data.setPickedPokemonData(removePokemon);
+        setPickedPokemonData(removePokemon);
         localStorage.setItem('localStorageData', JSON.stringify(removePokemon));
       }
     });
@@ -106,7 +107,7 @@ function Dashboard() {
 
   const monsterBallCount = 6;
 
-  let dashboradList = monsterBallCount - data.pickedPokemonData.length;
+  let dashboradList = monsterBallCount - pickedPokemonData.length;
 
   let monsterBall = new Array(dashboradList).fill(null);
 
@@ -114,7 +115,7 @@ function Dashboard() {
     <Container>
       <Title>나만의 포켓몬</Title>
       <MyPokemonSection>
-        {data.pickedPokemonData.map((pokemon) => {
+        {pickedPokemonData.map((pokemon) => {
           return (
             <Link key={pokemon.id} to={`/pokemon/${pokemon.id}`}>
               <PickedPokemon>
