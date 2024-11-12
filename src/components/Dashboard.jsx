@@ -3,6 +3,7 @@ import pokeball from '/src/assets/images/pokeball.png';
 import { useContext } from 'react';
 import { PokemonContext } from '../context/PokemonContext';
 import { Link } from 'react-router-dom';
+import Swal from 'sweetalert2';
 
 const Container = styled.div`
   background-color: #fff;
@@ -80,11 +81,21 @@ function Dashboard() {
 
   const handleRemove = (e, p) => {
     e.preventDefault();
-    // e.stopPropagation();
     const removePokemon = data.pickedPokemonData.filter((el) => {
       p.id !== el.id;
     });
-    data.setPickedPokemonData(removePokemon);
+    Swal.fire({
+      icon: 'warning',
+      text: '등록 포켓몬이 삭제 하겠습니까?',
+      showCancelButton: true,
+      confirmButtonText: '삭제',
+      cancelButtonText: '취소',
+    }).then((result) => {
+      if (result.value) {
+        data.setPickedPokemonData(removePokemon);
+      }
+    });
+    // e.stopPropagation();
   };
 
   const monsterBallCount = 6;

@@ -79,10 +79,19 @@ function PokemonCard({ pokemon }) {
         text: '이미 추가된 포켓몬 입니다.',
       });
     } else {
-      data.setPickedPokemonData([...data.pickedPokemonData, selectedPokemon]);
       Swal.fire({
         icon: 'success',
-        text: '포켓몬이 등록 되었습니다.',
+        text: `${selectedPokemon.korean_name} 포켓몬을 등록 하겠습니까?`,
+        showCancelButton: true,
+        confirmButtonText: '등록',
+        cancelButtonText: '취소',
+      }).then((result) => {
+        if (result.value) {
+          data.setPickedPokemonData([
+            ...data.pickedPokemonData,
+            selectedPokemon,
+          ]);
+        }
       });
     }
   };
