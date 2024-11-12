@@ -88,7 +88,11 @@ function Dashboard() {
 
     Swal.fire({
       icon: 'warning',
-      text: '등록 포켓몬이 삭제 하시겠습니까?',
+      text: `${pokemon.korean_name} 포켓몬을 삭제 하시겠습니까?`,
+      imageUrl: `${pokemon.img_url}`,
+      imageWidth: 200,
+      imageHeight: 200,
+      imageAlt: 'Custom image',
       showCancelButton: true,
       confirmButtonText: '삭제',
       cancelButtonText: '취소',

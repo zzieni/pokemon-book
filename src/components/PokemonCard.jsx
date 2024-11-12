@@ -85,6 +85,10 @@ function PokemonCard({ pokemon }) {
       Swal.fire({
         icon: 'success',
         text: `${selectedPokemon.korean_name} 포켓몬을 등록 하시겠습니까?`,
+        imageUrl: `${selectedPokemon.img_url}`,
+        imageWidth: 200,
+        imageHeight: 200,
+        imageAlt: 'Pokemon image',
         showCancelButton: true,
         confirmButtonText: '등록',
         cancelButtonText: '취소',
