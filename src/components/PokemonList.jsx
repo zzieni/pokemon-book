@@ -14,18 +14,13 @@ const PokemonListSection = styled.div`
   flex-wrap: wrap;
 `;
 
-function PokemonList({ pickedPokemonData, setPickedPokemonData }) {
+function PokemonList() {
   const pokemonData = MOCK_DATA;
-  // const [pokemonData, setPokemonData] = useState(MOCK_DATA);
+
   return (
     <PokemonListSection>
       {pokemonData.map((pokemon) => (
-        <PokemonCard
-          key={pokemon.id}
-          pokemon={pokemon}
-          pickedPokemonData={pickedPokemonData}
-          setPickedPokemonData={setPickedPokemonData}
-        />
+        <PokemonCard key={pokemon.id} pokemon={pokemon} />
       ))}
     </PokemonListSection>
   );

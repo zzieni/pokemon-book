@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import { useContext } from 'react';
+import { PokemonContext } from '../context/PokemonContext';
 
 // 스타일링된 컴포넌트 정의
 const Card = styled.div`
@@ -52,20 +54,17 @@ const AddButton = styled.button`
   }
 `;
 
-function PokemonCard({ pokemon, pickedPokemonData, setPickedPokemonData }) {
-  // const handleCard = (e, pokemonCard) => {
-  //   e.preventDefault();
-  //   console.log('카드 클릭', pokemonCard);
-  // };
+function PokemonCard({ pokemon }) {
+  const data = useContext(PokemonContext);
 
   const handleAdd = (e, selectedPokemon) => {
     e.preventDefault(); //본인 만
     // e.stopPropagation(); // 부모까지
 
     // 6개 제한, 중복 체크 하고 altet
-    const maxPickedPokemon = pickedPokemonData.length >= 6;
+    const maxPickedPokemon = data.pickedPokemonData.length >= 6;
 
-    const checkedPokemon = pickedPokemonData.find((el) => {
+    const checkedPokemon = data.pickedPokemonData.find((el) => {
       return el.id === selectedPokemon.id;
     });
 
@@ -74,11 +73,10 @@ function PokemonCard({ pokemon, pickedPokemonData, setPickedPokemonData }) {
     } else if (checkedPokemon) {
       alert('이미 추가된 포켓몬 입니다.');
     } else {
-      setPickedPokemonData([...pickedPokemonData, selectedPokemon]);
+      data.setPickedPokemonData([...data.pickedPokemonData, selectedPokemon]);
     }
   };
 
-  // TODO: 디테일 페이지 Link 또는 버튼!
   return (
     <>
       <Link to={`/pokemon/${pokemon.id}`}>
@@ -91,9 +89,6 @@ function PokemonCard({ pokemon, pickedPokemonData, setPickedPokemonData }) {
           </AddButton>
         </Card>
       </Link>
-      {/* <AddButton value={pokemon} onClick={(e) => handleAddBtn(e, pokemon)}>
-        추가
-      </AddButton> */}
     </>
   );
 }

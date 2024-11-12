@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import pokeball from '/src/assets/images/pokeball.png';
+import { useContext } from 'react';
+import { PokemonContext } from '../context/PokemonContext';
 
 const Container = styled.div`
   background-color: #fff;
@@ -72,28 +74,20 @@ const RemoveButton = styled.button`
   }
 `;
 
-function Dashboard({ pickedPokemonData, setPickedPokemonData }) {
-  // const AddPokemon = () => {
-  //   return pickedPokemonData.map((pokemon) => {
-  //     return (
-  //       <PickedPokemon key={pokemon.id}>
-  //         <PokemonImage src={pokemon.img_url} alt={pokemon} />
-  //         <PokemonName>{pokemon.korean_name}</PokemonName>
-  //       </PickedPokemon>
-  //     );
-  //   });
-  // };
+function Dashboard() {
+  const data = useContext(PokemonContext);
+  console.log(data);
 
   const handleRemove = (p) => {
-    const removePokemon = pickedPokemonData.filter((el) => {
+    const removePokemon = data.pickedPokemonData.filter((el) => {
       p.id !== el.id;
     });
-    setPickedPokemonData(removePokemon);
+    data.setPickedPokemonData(removePokemon);
   };
 
   const monsterBallCount = 6;
 
-  let dashboradList = monsterBallCount - pickedPokemonData.length;
+  let dashboradList = monsterBallCount - data.pickedPokemonData.length;
 
   let monsterBall = new Array(dashboradList).fill(null);
 
@@ -101,7 +95,7 @@ function Dashboard({ pickedPokemonData, setPickedPokemonData }) {
     <Container>
       <Title>나만의 포켓몬</Title>
       <MyPokemonSection>
-        {pickedPokemonData.map((pokemon) => {
+        {data.pickedPokemonData.map((pokemon) => {
           return (
             <div key={pokemon.id}>
               <PickedPokemon>
