@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
 import { PokemonContext } from '../context/PokemonContext';
+import Swal from 'sweetalert2';
 
 // 스타일링된 컴포넌트 정의
 const Card = styled.div`
@@ -67,13 +68,22 @@ function PokemonCard({ pokemon }) {
     const checkedPokemon = data.pickedPokemonData.find((el) => {
       return el.id === selectedPokemon.id;
     });
-
     if (maxPickedPokemon) {
-      alert('더 이상 포켓몬을 등록할 수 없습니다.');
+      Swal.fire({
+        icon: 'warning',
+        text: '더 이상 포켓몬을 등록할 수 없습니다.',
+      });
     } else if (checkedPokemon) {
-      alert('이미 추가된 포켓몬 입니다.');
+      Swal.fire({
+        icon: 'warning',
+        text: '이미 추가된 포켓몬 입니다.',
+      });
     } else {
       data.setPickedPokemonData([...data.pickedPokemonData, selectedPokemon]);
+      Swal.fire({
+        icon: 'success',
+        text: '포켓몬이 등록 되었습니다.',
+      });
     }
   };
 

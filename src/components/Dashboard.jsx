@@ -2,6 +2,7 @@ import styled from 'styled-components';
 import pokeball from '/src/assets/images/pokeball.png';
 import { useContext } from 'react';
 import { PokemonContext } from '../context/PokemonContext';
+import { Link } from 'react-router-dom';
 
 const Container = styled.div`
   background-color: #fff;
@@ -76,9 +77,10 @@ const RemoveButton = styled.button`
 
 function Dashboard() {
   const data = useContext(PokemonContext);
-  console.log(data);
 
-  const handleRemove = (p) => {
+  const handleRemove = (e, p) => {
+    e.preventDefault();
+    // e.stopPropagation();
     const removePokemon = data.pickedPokemonData.filter((el) => {
       p.id !== el.id;
     });
@@ -97,15 +99,15 @@ function Dashboard() {
       <MyPokemonSection>
         {data.pickedPokemonData.map((pokemon) => {
           return (
-            <div key={pokemon.id}>
+            <Link key={pokemon.id} to={`/pokemon/${pokemon.id}`}>
               <PickedPokemon>
                 <PokemonImage src={pokemon.img_url} alt={pokemon} />
                 <PokemonName>{pokemon.korean_name}</PokemonName>
-                <RemoveButton onClick={(e) => handleRemove(e.target.value)}>
+                <RemoveButton onClick={(e) => handleRemove(e, e.target.value)}>
                   삭제
                 </RemoveButton>
               </PickedPokemon>
-            </div>
+            </Link>
           );
         })}
         {monsterBall.map((_, index) => {

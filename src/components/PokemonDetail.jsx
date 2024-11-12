@@ -21,7 +21,7 @@ const PokemonDes = styled.p`
   color: #000000;
 `;
 
-const AddButton = styled.button`
+const BackButton = styled.button`
   margin-top: 30px;
   padding: 8px 16px;
   background-color: #030303;
@@ -30,11 +30,26 @@ const AddButton = styled.button`
   border-radius: 4px;
   cursor: pointer;
   transition: background-color 0.3s;
-
+  margin: 30px 10px;
   &:hover {
     background-color: #3c22af;
   }
 `;
+
+// const AddButton = styled.button`
+//   margin-top: 30px;
+//   padding: 8px 16px;
+//   background-color: #030303;
+//   color: white;
+//   border: none;
+//   border-radius: 4px;
+//   cursor: pointer;
+//   transition: background-color 0.3s;
+//   margin: 30px 10px;
+//   &:hover {
+//     background-color: #22af51;
+//   }
+// `;
 
 function PokemonDetail() {
   const pokemonData = MOCK_DATA;
@@ -57,9 +72,10 @@ function PokemonDetail() {
       <PokemonName>{pokemonDetail.korean_name}</PokemonName>
       <PokemonDes>타입 : {pokemonDetail.types}</PokemonDes>
       <PokemonDes>{pokemonDetail.description}</PokemonDes>
-      <AddButton type="button" onClick={handleBack}>
+      <BackButton type="button" onClick={handleBack}>
         뒤로가기
-      </AddButton>
+      </BackButton>
+      {/* <AddButton type="button">추가</AddButton> */}
     </>
   );
 }
