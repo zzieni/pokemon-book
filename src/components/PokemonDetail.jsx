@@ -36,20 +36,20 @@ const BackButton = styled.button`
   }
 `;
 
-// const AddButton = styled.button`
-//   margin-top: 30px;
-//   padding: 8px 16px;
-//   background-color: #030303;
-//   color: white;
-//   border: none;
-//   border-radius: 4px;
-//   cursor: pointer;
-//   transition: background-color 0.3s;
-//   margin: 30px 10px;
-//   &:hover {
-//     background-color: #22af51;
-//   }
-// `;
+const AddButton = styled.button`
+  margin-top: 30px;
+  padding: 8px 16px;
+  background-color: #030303;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin: 30px 10px;
+  &:hover {
+    background-color: #22af51;
+  }
+`;
 
 function PokemonDetail() {
   const pokemonData = MOCK_DATA;
@@ -66,6 +66,10 @@ function PokemonDetail() {
     navigate('/dex');
   };
 
+  const handleAdd = () => {
+    console.log('디테일 페이지 추가 버튼');
+  };
+
   return (
     <>
       <PokemonImage src={pokemonDetail.img_url} alt={name} />
@@ -75,7 +79,9 @@ function PokemonDetail() {
       <BackButton type="button" onClick={handleBack}>
         뒤로가기
       </BackButton>
-      {/* <AddButton type="button">추가</AddButton> */}
+      <AddButton type="button" onClick={handleAdd}>
+        추가
+      </AddButton>
     </>
   );
 }

@@ -5,6 +5,11 @@ import { PokemonContext } from '../context/PokemonContext';
 import Swal from 'sweetalert2';
 
 // 스타일링된 컴포넌트 정의
+
+const CardList = styled.div`
+  margin: 10px;
+`;
+
 const Card = styled.div`
   width: 200px;
   border: 1px solid #e0e0e0;
@@ -16,7 +21,6 @@ const Card = styled.div`
   align-items: center;
   padding: 16px;
   background-color: #f8f8f8;
-  margin: 30px;
 `;
 
 const PokemonImage = styled.img`
@@ -62,7 +66,6 @@ function PokemonCard({ pokemon }) {
     e.preventDefault(); //본인 만
     // e.stopPropagation(); // 부모까지
 
-    // 6개 제한, 중복 체크 하고 altet
     const maxPickedPokemon = data.pickedPokemonData.length >= 6;
 
     const checkedPokemon = data.pickedPokemonData.find((el) => {
@@ -81,7 +84,7 @@ function PokemonCard({ pokemon }) {
     } else {
       Swal.fire({
         icon: 'success',
-        text: `${selectedPokemon.korean_name} 포켓몬을 등록 하겠습니까?`,
+        text: `${selectedPokemon.korean_name} 포켓몬을 등록 하시겠습니까?`,
         showCancelButton: true,
         confirmButtonText: '등록',
         cancelButtonText: '취소',
@@ -91,13 +94,17 @@ function PokemonCard({ pokemon }) {
             ...data.pickedPokemonData,
             selectedPokemon,
           ]);
+          localStorage.setItem(
+            'localStorageData',
+            JSON.stringify([...data.pickedPokemonData, selectedPokemon])
+          );
         }
       });
     }
   };
 
   return (
-    <>
+    <CardList>
       <Link to={`/pokemon/${pokemon.id}`}>
         <Card>
           <PokemonImage src={pokemon.img_url} alt={pokemon} />
@@ -108,7 +115,7 @@ function PokemonCard({ pokemon }) {
           </AddButton>
         </Card>
       </Link>
-    </>
+    </CardList>
   );
 }
 

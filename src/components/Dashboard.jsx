@@ -79,23 +79,25 @@ const RemoveButton = styled.button`
 function Dashboard() {
   const data = useContext(PokemonContext);
 
-  const handleRemove = (e, p) => {
+  const handleRemove = (e, pokemon) => {
     e.preventDefault();
+
     const removePokemon = data.pickedPokemonData.filter((el) => {
-      p.id !== el.id;
+      return pokemon.id !== el.id;
     });
+
     Swal.fire({
       icon: 'warning',
-      text: '등록 포켓몬이 삭제 하겠습니까?',
+      text: '등록 포켓몬이 삭제 하시겠습니까?',
       showCancelButton: true,
       confirmButtonText: '삭제',
       cancelButtonText: '취소',
     }).then((result) => {
       if (result.value) {
         data.setPickedPokemonData(removePokemon);
+        localStorage.setItem('localStorageData', JSON.stringify(removePokemon));
       }
     });
-    // e.stopPropagation();
   };
 
   const monsterBallCount = 6;
@@ -114,7 +116,7 @@ function Dashboard() {
               <PickedPokemon>
                 <PokemonImage src={pokemon.img_url} alt={pokemon} />
                 <PokemonName>{pokemon.korean_name}</PokemonName>
-                <RemoveButton onClick={(e) => handleRemove(e, e.target.value)}>
+                <RemoveButton onClick={(e) => handleRemove(e, pokemon)}>
                   삭제
                 </RemoveButton>
               </PickedPokemon>
