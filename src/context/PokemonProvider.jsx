@@ -13,7 +13,6 @@ function PokemonProvider({ children }) {
   const handleAdd = (e, selectedPokemon) => {
     e.preventDefault(); //본인 만
     // e.stopPropagation(); // 부모까지
-    console.log(selectedPokemon);
 
     const maxPickedPokemon = pickedPokemonData.length >= 6;
 
@@ -37,8 +36,8 @@ function PokemonProvider({ children }) {
         showCancelButton: true,
         confirmButtonText: '등록',
         cancelButtonText: '취소',
-        imageUrl: 'https://unsplash.it/400/200',
-        imageWidth: 400,
+        imageUrl: `${selectedPokemon.img_url}`,
+        imageWidth: 200,
         imageHeight: 200,
         imageAlt: 'Custom image',
       }).then((result) => {
