@@ -1,6 +1,8 @@
 import { useNavigate, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import MOCK_DATA from '../data/MOCK_DATA';
+import { PokemonContext } from '../context/PokemonProvider';
+import { useContext } from 'react';
 
 const PokemonImage = styled.img`
   width: 200px;
@@ -53,6 +55,7 @@ const AddButton = styled.button`
 
 function PokemonDetail() {
   const pokemonData = MOCK_DATA;
+  const { handleAdd } = useContext(PokemonContext);
 
   const { id } = useParams();
   const navigate = useNavigate();
@@ -66,10 +69,6 @@ function PokemonDetail() {
     navigate('/dex');
   };
 
-  const handleAdd = () => {
-    console.log('디테일 페이지 추가 버튼');
-  };
-
   return (
     <>
       <PokemonImage src={pokemonDetail.img_url} alt={name} />
@@ -79,7 +78,7 @@ function PokemonDetail() {
       <BackButton type="button" onClick={handleBack}>
         뒤로가기
       </BackButton>
-      <AddButton type="button" onClick={handleAdd}>
+      <AddButton type="button" onClick={(e) => handleAdd(e, pokemonDetail)}>
         추가
       </AddButton>
     </>
