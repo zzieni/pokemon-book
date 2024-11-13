@@ -21,6 +21,7 @@ function PokemonList() {
     <PokemonListSection>
       {pokemonData.map((pokemon) => (
         <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        // item 안에 유즈컨텍스트 쓰지 말앙라
       ))}
     </PokemonListSection>
   );

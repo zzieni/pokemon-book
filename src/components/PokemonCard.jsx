@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useContext } from 'react';
-import { PokemonContext } from '../context/PokemonContext';
 import Swal from 'sweetalert2';
+import { PokemonContext } from '../context/PokemonProvider';
 
 // 스타일링된 컴포넌트 정의
 

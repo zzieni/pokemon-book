@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import pokeball from '/src/assets/images/pokeball.png';
 import { useContext } from 'react';
-import { PokemonContext } from '../context/PokemonContext';
+import { PokemonContext } from '../context/PokemonProvider';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
 
