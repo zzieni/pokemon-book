@@ -1,7 +1,5 @@
 # 나만의 포켓몬도감
-props drilling 
- 
-Context API : props drilling을 없애고, 전역 상태 관리를 구현
+이 프로젝트는 Context API를 사용하여 props drilling을 없애고 전역 상태 관리를 구현한 포켓몬도감 애플리케이션입니다.
 
 ## 구현 기능
 1. 포켓몬 리스트와 선택 기능 
@@ -18,8 +16,6 @@ Context API : props drilling을 없애고, 전역 상태 관리를 구현
    PokemonDetail 컴포넌트에서, path params로 전달받은 포켓몬 ID를 통해 상세 정보를 표시한다.
    디테일 페이지 내의 "뒤로가기" 버튼을 사용하여 포켓몬 리스트 페이지로 돌아 갈 수 있다.
    
-
-## 파일 구조
 
 📦src
  ┣ 📂assets
@@ -44,3 +40,10 @@ Context API : props drilling을 없애고, 전역 상태 관리를 구현
  ┣ 📜index.css
  ┣ 📜main.jsx
  ┗ 📜Router.jsx
+
+## 컴포넌트 설명
+* Dashboard: 선택된 포켓몬 표시 및 관리
+* PokemonCard: 개별 포켓몬 정보 카드
+* PokemonDetail: 포켓몬 상세 정보 페이지
+* PokemonList: 전체 포켓몬 리스트 표시
+* NotFound: 404 에러 페이지
