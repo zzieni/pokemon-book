@@ -16,30 +16,8 @@
    PokemonDetail 컴포넌트에서, path params로 전달받은 포켓몬 ID를 통해 상세 정보를 표시한다.
    디테일 페이지 내의 "뒤로가기" 버튼을 사용하여 포켓몬 리스트 페이지로 돌아 갈 수 있다.
    
+![image](https://github.com/user-attachments/assets/dcf35eff-11f9-4750-8085-39ef01b2082a)
 
-📦src
- ┣ 📂assets
- ┃ ┣ 📂images
- ┃ ┣ 📜logo.png
- ┃ ┗ 📜pokeball.png
- ┣ 📂components
- ┃ ┣ 📜Dashboard.jsx
- ┃ ┣ 📜NotFound.jsx
- ┃ ┣ 📜PokemonCard.jsx
- ┃ ┣ 📜PokemonDetail.jsx
- ┃ ┗ 📜PokemonList.jsx
- ┣ 📂context
- ┃ ┗ 📜PokemonProvider.jsx
- ┣ 📂data
- ┃ ┗ 📜MOCK_DATA.js
- ┣ 📂pages
- ┃ ┣ 📜Dex.jsx
- ┃ ┗ 📜Home.jsx
- ┣ 📜App.css
- ┣ 📜App.jsx
- ┣ 📜index.css
- ┣ 📜main.jsx
- ┗ 📜Router.jsx
 
 ## 컴포넌트 설명
 * Dashboard: 선택된 포켓몬 표시 및 관리
@@ -47,3 +25,14 @@
 * PokemonDetail: 포켓몬 상세 정보 페이지
 * PokemonList: 전체 포켓몬 리스트 표시
 * NotFound: 404 에러 페이지
+
+## 컨텍스트
+* PokemonProvider: 포켓몬 관련 전역 상태 관리
+
+## 페이지
+* Home: 메인 페이지
+* Dex: 포켓몬도감 페이지
+
+## 라우팅
+* Router.jsx: 애플리케이션의 라우팅 설정
+이 구조를 통해 효율적인 상태 관리와 직관적인 사용자 경험을 제공하는 포켓몬도감 애플리케이션을 구현할 수 있습니다.
