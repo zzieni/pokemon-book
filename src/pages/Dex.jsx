@@ -1,6 +1,5 @@
-import React from 'react';
-import Dashboard from '../compoents/Dashboard';
-import PokemonList from '../compoents/PokemonList';
+import Dashboard from '../components/Dashboard';
+import PokemonList from '../components/PokemonList';
 
 function Dex() {
   return (
@@ -8,6 +7,7 @@ function Dex() {
       <header>
         <Dashboard />
       </header>
+
       <main>
         <PokemonList />
       </main>

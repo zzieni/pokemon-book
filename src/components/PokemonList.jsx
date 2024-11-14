@@ -1,6 +1,6 @@
-import React from 'react';
 import PokemonCard from './PokemonCard';
 import styled from 'styled-components';
+import MOCK_DATA from '../data/MOCK_DATA';
 
 const PokemonListSection = styled.div`
   background-color: #fff;
@@ -15,9 +15,14 @@ const PokemonListSection = styled.div`
 `;
 
 function PokemonList() {
+  const pokemonData = MOCK_DATA;
+
   return (
     <PokemonListSection>
-      <PokemonCard />
+      {pokemonData.map((pokemon) => (
+        <PokemonCard key={pokemon.id} pokemon={pokemon} />
+        // item 안에 유즈컨텍스트 쓰지 말앙라
+      ))}
     </PokemonListSection>
   );
 }
