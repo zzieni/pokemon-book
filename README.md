@@ -17,7 +17,8 @@ https://pokemon-book-ten.vercel.app/
 4. 디테일 페이지
    * PokemonDetail 컴포넌트에서, path params로 전달받은 포켓몬 ID를 통해 상세 정보를 표시한다.
    * 디테일 페이지 내의 "뒤로가기" 버튼을 사용하여 포켓몬 리스트 페이지로 돌아 갈 수 있다.
-   
+
+## 파일 구조   
 ![image](https://github.com/user-attachments/assets/dcf35eff-11f9-4750-8085-39ef01b2082a)
 
 
