@@ -1,9 +1,9 @@
 import styled from 'styled-components';
 import pokeball from '/src/assets/images/pokeball.png';
-import { useContext } from 'react';
-import { PokemonContext } from '../context/PokemonProvider';
 import { Link } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import { useDispatch, useSelector } from 'react-redux';
+import { removePokemon } from '../redux/slices/pokemonDataSlice';
 
 const Container = styled.div`
   background-color: #fff;
@@ -77,13 +77,16 @@ const RemoveButton = styled.button`
 `;
 
 function Dashboard() {
-  const { pickedPokemonData, setPickedPokemonData } =
-    useContext(PokemonContext);
+  const pickedPokemonData = useSelector((state) => {
+    return state.pokemonDataRedux;
+  });
+
+  const dispatch = useDispatch();
 
   const handleRemove = (e, pokemon) => {
     e.preventDefault();
 
-    const removePokemon = pickedPokemonData.filter((el) => {
+    const filteredPokemonData = pickedPokemonData.filter((el) => {
       return pokemon.id !== el.id;
     });
 
@@ -99,8 +102,12 @@ function Dashboard() {
       cancelButtonText: '취소',
     }).then((result) => {
       if (result.value) {
-        setPickedPokemonData(removePokemon);
-        localStorage.setItem('localStorageData', JSON.stringify(removePokemon));
+        // setPickedPokemonData(removePokemon);
+        dispatch(removePokemon(pokemon.id));
+        localStorage.setItem(
+          'localStorageData',
+          JSON.stringify(filteredPokemonData)
+        );
       }
     });
   };

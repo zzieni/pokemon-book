@@ -1,7 +1,7 @@
 import { createContext, useState } from 'react';
 import Swal from 'sweetalert2';
 
-export const PokemonContext = createContext(null);
+const PokemonContext = createContext(null);
 
 function PokemonProvider({ children }) {
   const [pickedPokemonData, setPickedPokemonData] = useState(() =>
